@@ -11,6 +11,7 @@ const Monsters: FC = () => {
   const handleMouseLeave = () => {
     setIsHovered(false)
   }
+
   return (
     <div
       onMouseEnter={handleMouseEnter}

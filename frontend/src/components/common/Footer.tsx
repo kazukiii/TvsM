@@ -8,7 +8,7 @@ import Button from './Button.tsx'
 
 const Footer: FC = () => {
   return (
-    <div className="bg-tvsm-black text-tvsm-white w-full h-96 flex justify-between items-center relative p-16">
+    <footer className="bg-tvsm-black text-tvsm-white w-full h-96 flex justify-between items-center relative p-16">
       <div>
         <p className="text-2xl font-mulish">GET NOTIFY WHEN NEW GAMES ARRIVE!</p>
         <div className="mt-6">
@@ -33,7 +33,7 @@ const Footer: FC = () => {
         <div>Track Order</div>
       </div>
       <p className="absolute bottom-5 left-1/2 transform -translate-x-1/2">@ 2023 We make games</p>
-    </div>
+    </footer>
   )
 }
 
