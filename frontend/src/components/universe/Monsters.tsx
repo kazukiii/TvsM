@@ -21,7 +21,7 @@ const Monsters: FC = () => {
       }`}
     >
       <Button
-        text="TEDDIES"
+        text="MONSTER"
         className="w-72 h-20 text-3xl py-5 px-10 font-ldr-kaet absolute bottom-5 left-1/2 transform -translate-x-1/2"
       />
     </div>
