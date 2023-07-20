@@ -1,31 +1,33 @@
 import { FC, useState } from "react";
 import PropTypes from "prop-types";
 
-interface ImageProps {
-  imageLocation?: string;
+interface CharacterImageProps {
+  imageSources: string[]; // Pass an array of image sources
 }
 
-const Image: FC<ImageProps> = ({ imageLocation = "" }) => {
-  const [imageSrc, setImageSrc] = useState(imageLocation || "archer-BW-1.png");
+const CharacterImage: FC<CharacterImageProps> = ({ imageSources }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const changeImage = () => {
-    setImageSrc((prevSrc) =>
-      prevSrc === "archer-BW-1.png" ? "panda-BW-1.png" : "archer-BW-1.png"
-    );
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
   };
 
   return (
     <div className="image">
       <div className="archer-BW-wrapper">
-        <img className="archer-BW" alt="Archer BW" src={imageSrc} />
+        <img
+          className="archer-BW"
+          alt="Archer BW"
+          src={imageSources[currentImageIndex]}
+        />
       </div>
       <button onClick={changeImage}>Change Image</button>
     </div>
   );
 };
 
-Image.propTypes = {
-  imageLocation: PropTypes.string,
+CharacterImage.propTypes = {
+  imageSources: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
-export default Image;
+export default CharacterImage;
