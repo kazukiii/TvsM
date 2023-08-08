@@ -29,3 +29,5 @@ const Monsters: FC = () => {
 }
 
 export default Monsters
+
+
