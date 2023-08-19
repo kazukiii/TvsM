@@ -5,6 +5,9 @@ import Universe from './pages/Universe.tsx'
 import RegisterPage from './pages/RegisterPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import FaqsPage from './pages/FaqsPage.tsx';
+import CharacterDetailsWrapper from './pages/CharacterDetailsWrapper.tsx'
+import TrackYourOrder from './pages/TrackYourOrder.tsx'
+import Profile from './pages/Profile.tsx'
 
 const App: FC = () => {
   return (
@@ -15,7 +18,10 @@ const App: FC = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/faqs" element={<FaqsPage />} />
-
+        <Route path="/universe/teddies" element={<CharacterDetailsWrapper character={'TEDDIES'} />} />
+        <Route path="/universe/monsters" element={<CharacterDetailsWrapper character={'MONSTERS'} />} />
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path='/track-your-order' element={<TrackYourOrder />} />
       </Routes>
     </Router>
   )
