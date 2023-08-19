@@ -21,12 +21,12 @@ const Teddies: FC = () => {
         isHovered ? 'bg-teddies-variant' : 'bg-teddies-default'
       }`}
     >
-      <Link to="/universe/characterDetails/CharacterImage" className="text-tvsm-white text-2xl font-mulish">
+      <Link to="/universe/teddies" className="text-tvsm-white text-2xl font-mulish">
         <Button
-        text="TEDDIES"
-        className="w-72 h-20 text-3xl py-5 px-10 font-ldr-kaet absolute bottom-5 left-1/2 transform -translate-x-1/2"
-      /></Link>
-      
+          text="TEDDIES"
+          className="w-72 h-20 text-3xl py-5 px-10 font-ldr-kaet absolute bottom-5 left-1/2 transform -translate-x-1/2"
+        />
+      </Link>
     </div>
   )
 }

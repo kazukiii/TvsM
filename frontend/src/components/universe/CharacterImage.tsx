@@ -1,33 +1,19 @@
-import { FC, useState } from "react";
-import PropTypes from "prop-types";
+import { FC } from 'react'
 
 interface CharacterImageProps {
-  imageSources: string[]; // Pass an array of image sources
+  backgroundImages: string[]
 }
 
-const CharacterImage: FC<CharacterImageProps> = ({ imageSources }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const changeImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
-  };
-
+const CharacterImage: FC<CharacterImageProps> = ({ backgroundImages }) => {
   return (
-    <div className="image">
-      <div className="archer-BW-wrapper">
-        <img
-          className="archer-BW"
-          alt="Archer BW"
-          src={imageSources[currentImageIndex]}
-        />
-      </div>
-      <button onClick={changeImage}>Change Image</button>
-    </div>
-  );
-};
+    <>
+      {backgroundImages.map((backgroundImage, index) => {
+        return (
+          <div key={index} className={`h-[1153px] w-full bg-no-repeat bg-cover bg-center ${backgroundImage}`}></div>
+        )
+      })}
+    </>
+  )
+}
 
-CharacterImage.propTypes = {
-  imageSources: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-};
-
-export default CharacterImage;
+export default CharacterImage

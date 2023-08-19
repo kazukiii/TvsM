@@ -9,7 +9,8 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/universe" element={<Universe />} />
-        <Route path="/characterDetailsWrapper" element={<CharacterDetailsWrapper />} />
+        <Route path="/universe/teddies" element={<CharacterDetailsWrapper character={'TEDDIES'} />} />
+        <Route path="/universe/monsters" element={<CharacterDetailsWrapper character={'MONSTERS'} />} />
       </Routes>
     </Router>
   )
