@@ -25,7 +25,7 @@ const Header: FC = () => {
         </Link>
       </div>
       <div className="flex items-center">
-        <img src={avatar} alt="avatar" className="w-28 h-28" />
+        <Link to="/profile"><img src={avatar} alt="avatar" className="w-28 h-28" /></Link>
         <img src={cartIcon} alt="cart" className="w-12 h-12" />
       </div>
     </header>
