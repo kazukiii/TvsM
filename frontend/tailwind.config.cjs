@@ -21,6 +21,10 @@ module.exports = {
         'teddies-variant': "url('/teddies-variant.png')",
         'monsters-default': "url('/monsters-default.png')",
         'monsters-variant': "url('/monsters-variant.png')",
+        'teddies-detail-1': "url('/teddies-detail-1.png')",
+        'teddies-detail-2': "url('/teddies-detail-2.png')",
+        'monsters-detail-1': "url('/monsters-detail-1.png')",
+        'monsters-detail-2': "url('/monsters-detail-2.png')",
       })
     },
   },
