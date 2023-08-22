@@ -16,6 +16,8 @@ module.exports = {
         "tvsm-black": "#000000",
         "tvsm-orange": "#CE8C3D",
         "tvsm-blue": "#00A0E4",
+        "tvsm-dark-blue": "#124069",
+        "tvsm-wine-red": "#442022",
       },
       backgroundImage: (theme) => ({
         "main-screen-default": "url('/main-screen-default.png')",
