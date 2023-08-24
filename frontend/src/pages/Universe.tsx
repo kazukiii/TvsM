@@ -5,7 +5,7 @@ import Teddies from '../components/universe/Teddies.tsx'
 import Monsters from '../components/universe/Monsters.tsx'
 import Footer from '../components/common/Footer.tsx'
 
-const Universe: FC = () => {
+const MainScreen: FC = () => {
   return (
     <>
       <Header />
@@ -19,4 +19,4 @@ const Universe: FC = () => {
   )
 }
 
-export default Universe
+export default MainScreen
