@@ -4,9 +4,10 @@ interface ButtonProps {
   text: string
   onClick?: () => void
   className?: string
+  disabled?: boolean
 }
 
-const Button: FC<ButtonProps> = ({ text, onClick, className }) => {
+const Button: FC<ButtonProps> = ({ text, onClick, className, disabled }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   const handleMouseEnter = () => {
@@ -26,7 +27,8 @@ const Button: FC<ButtonProps> = ({ text, onClick, className }) => {
         isHovered
           ? 'bg-tvsm-white text-tvsm-orange border-tvsm-orange'
           : 'bg-tvsm-orange text-tvsm-white border-tvsm-white'
-        }`}
+      }`}
+      disabled={disabled}
     >
       {text}
     </button>
