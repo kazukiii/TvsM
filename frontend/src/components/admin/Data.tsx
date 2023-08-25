@@ -204,7 +204,7 @@ const Data: FC = () => {
               >
                 <option value="ACCESSORIES">GAMES/GAMING ACCESSORIES</option>
                 <option value="TSHIRT">T-SHIRTS</option>
-                <option value="KEYCAHIN">KEYCHAINS</option>
+                <option value="KEYCHAIN">KEYCHAINS</option>
                 <option value="OTHER">OTHER</option>
               </select>
             </label>
