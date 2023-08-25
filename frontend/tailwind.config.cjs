@@ -32,6 +32,7 @@ module.exports = {
         'teddies-detail-2': "url('/teddies-detail-2.png')",
         'monsters-detail-1': "url('/monsters-detail-1.png')",
         'monsters-detail-2': "url('/monsters-detail-2.png')",
+        'ghost-event-card': "url('/ghost-event-card.png')",
         greenShadow1: "url('/greenShadow1.png')",
       }),
     },
