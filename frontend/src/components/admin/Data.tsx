@@ -10,6 +10,7 @@ const Data: FC = () => {
   const [price, setPrice] = useState<number>(0)
   const [category, setCategory] = useState('ACCESSORIES')
   const [quantity, setQuantity] = useState<number>(0)
+  const [savedMessage, setSavedMessage] = useState<string | null>(null)
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -42,8 +43,10 @@ const Data: FC = () => {
         },
       })
       console.log('Product added successfully!', response.data)
+      setSavedMessage('Saved!')
     } catch (error) {
       console.error('Error adding product:', error)
+      setSavedMessage(null)
     }
   }
 
@@ -224,6 +227,7 @@ const Data: FC = () => {
           </div>
         </div>
       </form>
+      {savedMessage && <div className="mt-4 text-green-500 text-2xl">{savedMessage}</div>}
     </>
   )
 }
