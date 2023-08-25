@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import Button from '../common/Button.tsx'
-import axios from 'axios'
+import axiosInstance from '../../services/axiosInstance.ts'
 
 const Data: FC = () => {
   const [image, setImage] = useState<File | null>(null)
@@ -10,6 +10,7 @@ const Data: FC = () => {
   const [price, setPrice] = useState<number>(0)
   const [category, setCategory] = useState('ACCESSORIES')
   const [quantity, setQuantity] = useState<number>(0)
+  const [savedMessage, setSavedMessage] = useState<string | null>(null)
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -36,14 +37,16 @@ const Data: FC = () => {
     formData.append('stockQty', quantity.toString())
 
     try {
-      const response = await axios.post('http://localhost:3000/products', formData, {
+      const response = await axiosInstance.post('/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       console.log('Product added successfully!', response.data)
+      setSavedMessage('Saved!')
     } catch (error) {
       console.error('Error adding product:', error)
+      setSavedMessage(null)
     }
   }
 
@@ -224,6 +227,7 @@ const Data: FC = () => {
           </div>
         </div>
       </form>
+      {savedMessage && <div className="mt-4 text-green-500 text-2xl">{savedMessage}</div>}
     </>
   )
 }

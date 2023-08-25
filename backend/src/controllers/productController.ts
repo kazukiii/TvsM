@@ -11,17 +11,22 @@ export const createProduct = async (req: Request, res: Response) => {
   const { originalname: fileName, path: filePath } = req.file
 
   try {
+    const baseData = {
+      name,
+      description,
+      category,
+      price: parseInt(price),
+      stockQty: parseInt(stockQty),
+      fileName,
+      filePath,
+    }
     const product = await prisma.product.create({
-      data: {
-        name,
-        description,
-        category,
-        size,
-        price: parseInt(price),
-        stockQty: parseInt(stockQty),
-        fileName,
-        filePath,
-      },
+      data: size
+        ? {
+            ...baseData,
+            size,
+          }
+        : baseData,
     })
 
     res.json(product)
