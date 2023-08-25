@@ -30,6 +30,8 @@ const App: FC = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/item/:id" element={<ItemDetail />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/faqs" element={<FaqsPage />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </Router>

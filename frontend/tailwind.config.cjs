@@ -12,9 +12,9 @@ module.exports = {
         "ldr-kaet": ['"LDR KAET"', "sans-serif"],
       },
       colors: {
-        "tvsm-white": "#F8F8E4",
-        "tvsm-black": "#000000",
-        "tvsm-orange": "#CE8C3D",
+        'tvsm-white': '#F8F8E4',
+        'tvsm-black': '#000000',
+        'tvsm-orange': '#CE8C3D',
         "tvsm-blue": "#00A0E4",
         "tvsm-dark-blue": "#124069",
         "tvsm-wine-red": "#442022",
