@@ -10,6 +10,7 @@ import TrackYourOrder from './pages/TrackYourOrder.tsx'
 import Profile from './pages/Profile.tsx'
 import Games from './pages/Games.tsx'
 import Admin from './pages/Admin.tsx'
+import EventPage from './pages/EventPage.tsx'
 
 const App: FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: FC = () => {
         <Route path="/track-your-order" element={<TrackYourOrder />} />
         <Route path="/games" element={<Games />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/events" element={<EventPage />} />
       </Routes>
     </Router>
   )
