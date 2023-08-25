@@ -12,6 +12,8 @@ import Admin from './pages/Admin.tsx'
 import Shop from './pages/Shop.tsx'
 import ItemDetail from './pages/ItemDetail.tsx'
 import TrackYourOrder from './pages/TrackYourOrder.tsx'
+import RegisterPage from './pages/RegisterPage.tsx'
+import FaqsPage from './pages/FaqsPage.tsx'
 
 const App: FC = () => {
   return (
@@ -29,6 +31,8 @@ const App: FC = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/item/:id" element={<ItemDetail />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/faqs" element={<FaqsPage />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </Router>
