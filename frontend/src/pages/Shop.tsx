@@ -11,7 +11,7 @@ const Shop: FC = () => {
   if (error) return <div>Error: {error}</div>
 
   return (
-    <>
+    <div className="flex flex-col gap-12">
       <Header />
       <div className="h-[120px] flex justify-center items-center">
         <h1 className="text-4xl font-ldr-kaet">SHOP</h1>
@@ -47,7 +47,7 @@ const Shop: FC = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 
