@@ -9,6 +9,7 @@ import Login from './pages/Login.tsx'
 import Profile from './pages/Profile.tsx'
 import Games from './pages/Games.tsx'
 import Admin from './pages/Admin.tsx'
+import EventPage from './pages/EventPage.tsx'
 import Shop from './pages/Shop.tsx'
 import ItemDetail from './pages/ItemDetail.tsx'
 import TrackYourOrder from './pages/TrackYourOrder.tsx'
@@ -29,6 +30,7 @@ const App: FC = () => {
         <Route path="/track-your-order" element={<TrackYourOrder />} />
         <Route path="/games" element={<Games />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/events" element={<EventPage />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/item/:id" element={<ItemDetail />} />
         <Route path="/register" element={<RegisterPage />} />
