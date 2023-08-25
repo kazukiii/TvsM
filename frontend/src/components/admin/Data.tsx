@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import Button from '../common/Button.tsx'
-import axios from 'axios'
+import axiosInstance from '../../services/axiosInstance.ts'
 
 const Data: FC = () => {
   const [image, setImage] = useState<File | null>(null)
@@ -36,7 +36,7 @@ const Data: FC = () => {
     formData.append('stockQty', quantity.toString())
 
     try {
-      const response = await axios.post('http://localhost:3000/products', formData, {
+      const response = await axiosInstance.post('/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
