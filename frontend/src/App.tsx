@@ -12,6 +12,8 @@ import Admin from './pages/Admin.tsx'
 import Shop from './pages/Shop.tsx'
 import ItemDetail from './pages/ItemDetail.tsx'
 import TrackYourOrder from './pages/TrackYourOrder.tsx'
+import RegisterPage from './pages/RegisterPage.tsx'
+import FaqsPage from './pages/FaqsPage.tsx'
 
 const App: FC = () => {
   return (
