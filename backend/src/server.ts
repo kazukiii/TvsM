@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import productRoutes from './routes/productRoutes'
 import cartRoutes from './routes/cartRoutes'
+import userRoutes from './routes/userRoutes'
 import path from 'path'
 
 const app = express()
@@ -11,6 +12,7 @@ app.use(cors())
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 app.use('/products', productRoutes)
 app.use('/cart', cartRoutes)
+app.use('/user', userRoutes)
 
 const PORT = 3000
 app.listen(PORT, () => {
