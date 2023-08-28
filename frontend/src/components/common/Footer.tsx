@@ -5,19 +5,25 @@ import facebookIcon from '../../assets/icons/facebook.svg'
 import tiktokIcon from '../../assets/icons/tiktok.svg'
 import discordIcon from '../../assets/icons/discord.svg'
 import Button from './Button.tsx'
+import { Link } from 'react-router-dom'
 
 const Footer: FC = () => {
   return (
     <footer className="bg-tvsm-black text-tvsm-white w-full relative xl:p-16 sm:p-10 p-4">
-      <div className='flex justify-between items-center md:flex-row flex-col md:gap-0 sm:gap-16 gap-10'>
+      <div className="flex justify-between items-center md:flex-row flex-col md:gap-0 sm:gap-16 gap-10">
         <div>
           <p className="lg:text-2xl text-lg font-mulish">GET NOTIFY WHEN NEW GAMES ARRIVE!</p>
           <div className="lg:mt-6 mt-4 flex gap-2 flex-wrap">
-            <input className="bg-tvsm-white text-tvsm-black px-4 py-2 xl:w-96 w-60 lg:h-14 h-10" placeholder="Enter your email" />
+            <input
+              className="bg-tvsm-white text-tvsm-black px-4 py-2 xl:w-96 w-60 lg:h-14 h-10"
+              placeholder="Enter your email"
+            />
             <Button text="SUBSCRIBE" className="lg:w-44 w-32 lg:h-14 h-10 border-2 border-tvsm-white rounded-xl" />
           </div>
           <div className="flex items-center lg:gap-10 gap-6 lg:mt-6 mt-4">
-            <img src={instagramIcon} alt="instagram" className="lg:w-10 w-6 h-10" />
+            <Link to="https://www.instagram.com/teddies.vs.monsters/" target="_blank">
+              <img src={instagramIcon} alt="instagram" className="sm:w-10 w-6 sm:h-10 h-6" />
+            </Link>
             <img src={twitterIcon} alt="twitter" className="lg:w-10 w-6 h-10" />
             <img src={facebookIcon} alt="facebook" className="lg:w-10 w-6 h-10" />
             <img src={tiktokIcon} alt="tiktok" className="lg:w-10 w-6 h-10" />
@@ -28,10 +34,14 @@ const Footer: FC = () => {
           <div>About Us</div>
           <div>Contact Us</div>
           <div>Game Rules</div>
-          <div>FAQs</div>
+          <Link to="/faqs">
+            <div>FAQs</div>
+          </Link>
           <div>Privacy Policy</div>
           <div>Terms of Use</div>
-          <div>Track Order</div>
+          <Link to="/track-your-order">
+            <div>Track Order</div>
+          </Link>
         </div>
       </div>
       <p className="md:mt-20 mt-10 text-center">@ 2023 We make games</p>

@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from 'react'
+import { FC, Fragment, useMemo, useState } from 'react'
 import logo from '../../assets/logo.svg'
 import avatar from '../../assets/avatar.png'
 import cartIcon from '../../assets/icons/cart.svg'
@@ -7,12 +7,24 @@ import { HiMenuAlt3 } from 'react-icons/hi'
 import { IoMdClose } from 'react-icons/io'
 import { Dialog, Transition, Popover } from '@headlessui/react'
 import useCart from '../../hooks/useCart.ts'
+import { FiTrash2 } from 'react-icons/fi'
+import axiosInstance from '../../services/axiosInstance.ts'
 
 const Header: FC = () => {
+  const navigate = useNavigate()
   const [open, setOpen] = useState<boolean>(false)
   const { cartItems, fetchCart } = useCart()
+  const totalPrice = useMemo(
+    () => cartItems.reduce((acc, cart) => acc + cart.product.price * cart.quantity, 0),
+    [cartItems],
+  )
 
-  const navigate = useNavigate()
+  const handleDelete = async (id: string) => {
+    const ok = confirm('Are you sure you want to delete this item?')
+    if (!ok) return
+    await axiosInstance.delete(`/cart/${id}`)
+    await fetchCart()
+  }
 
   return (
     <>
@@ -42,27 +54,48 @@ const Header: FC = () => {
           </button>
           <Popover className="relative">
             <Popover.Button onClick={fetchCart}>
-              <img src={cartIcon} alt="cart" className="w-12 h-12" />
+              <div className="relative py-2">
+                {cartItems.length > 0 && (
+                  <div className="t-0 absolute right-0">
+                    <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
+                      {cartItems.reduce((acc, item) => acc + item.quantity, 0).toString()}
+                    </p>
+                  </div>
+                )}
+                <img src={cartIcon} alt="cart" className="w-12 h-12" />
+              </div>
             </Popover.Button>
 
             <Popover.Panel className="absolute -right-6 z-10 bg-[#F8F8E4] border border-tvsm-orange h-[1000px] w-[400px] rounded-2xl flex flex-col justify-between py-3">
-              {cartItems.map(item => (
-                <div className="flex justify-center gap-10">
-                  <img
-                    src={`${import.meta.env.VITE_API_ENDPOINT as string}/${item.product.filePath}`}
-                    alt={item.product.name}
-                    className="w-[120px] h-[120px] block object-cover"
-                  />
-                  <div>
-                    <div className="text-2xl">{item.product.name}</div>
-                    <div className="text-gray-500">{item.product.description}</div>
-                    {item.product.size && <div className="text-gray-500">Size: {item.product.size}</div>}
-                    <div className="text-gray-500">Quantity: {item.quantity}</div>
-                    <div className="text-gray-500">${item.product.price}</div>
+              <div className="flex flex-col gap-16">
+                {cartItems.length === 0 && (
+                  <div className="flex flex-col items-center">
+                    <div className="text-2xl">Your cart is empty</div>
+                    <div className="text-gray-500">Add something to make me happy :)</div>
                   </div>
-                </div>
-              ))}
-              <div className="flex justify-center">
+                )}
+                {cartItems.map(item => (
+                  <div className="flex justify-center gap-10">
+                    <img
+                      src={`${import.meta.env.VITE_API_ENDPOINT as string}/${item.product.filePath}`}
+                      alt={item.product.name}
+                      className="w-[120px] h-[120px] block object-cover"
+                    />
+                    <div>
+                      <div className="text-2xl">{item.product.name}</div>
+                      <div className="text-gray-500">{item.product.description}</div>
+                      {item.product.size && <div className="text-gray-500">Size: {item.product.size}</div>}
+                      <div className="text-gray-500">Quantity: {item.quantity}</div>
+                      <div className="text-gray-500">${item.product.price}</div>
+                    </div>
+                    <button onClick={() => handleDelete(item.id)}>
+                      <FiTrash2 className="text-gray-500 text-2xl" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="text-2xl">Total: ${totalPrice}</div>
                 <button className="text-tvsm-white bg-tvsm-orange font-mulish text-2xl rounded-2xl p-6 w-3/5">
                   CHECK OUT
                 </button>
@@ -138,29 +171,50 @@ const Header: FC = () => {
                         <div className="flex items-center mt-5">
                           <Popover className="relative">
                             <Popover.Button onClick={fetchCart}>
-                              <img src={cartIcon} alt="cart" className="w-12 h-12" />
+                              <div className="relative py-2">
+                                {cartItems.length > 0 && (
+                                  <div className="t-0 absolute right-0">
+                                    <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
+                                      {cartItems.reduce((acc, item) => acc + item.quantity, 0).toString()}
+                                    </p>
+                                  </div>
+                                )}
+                                <img src={cartIcon} alt="cart" className="w-12 h-12" />
+                              </div>
                             </Popover.Button>
 
                             <Popover.Panel className="absolute -left-6 z-10 bg-[#F8F8E4] border border-tvsm-orange h-[1000px] w-[400px] rounded-2xl flex flex-col justify-between py-3">
-                              {cartItems.map(item => (
-                                <div className="flex justify-center gap-10">
-                                  <img
-                                    src={`${import.meta.env.VITE_API_ENDPOINT as string}/${item.product.filePath}`}
-                                    alt={item.product.name}
-                                    className="w-[120px] h-[120px] block object-cover"
-                                  />
-                                  <div>
-                                    <div className="text-2xl">{item.product.name}</div>
-                                    <div className="text-gray-500">{item.product.description}</div>
-                                    {item.product.size && (
-                                      <div className="text-gray-500">Size: {item.product.size}</div>
-                                    )}
-                                    <div className="text-gray-500">Quantity: {item.quantity}</div>
-                                    <div className="text-gray-500">${item.product.price}</div>
+                              <div className="flex flex-col gap-16">
+                                {cartItems.length === 0 && (
+                                  <div className="flex flex-col items-center">
+                                    <div className="text-2xl">Your cart is empty</div>
+                                    <div className="text-gray-500">Add something to make me happy :)</div>
                                   </div>
-                                </div>
-                              ))}
-                              <div className="flex justify-center">
+                                )}
+                                {cartItems.map(item => (
+                                  <div className="flex justify-center gap-10">
+                                    <img
+                                      src={`${import.meta.env.VITE_API_ENDPOINT as string}/${item.product.filePath}`}
+                                      alt={item.product.name}
+                                      className="w-[120px] h-[120px] block object-cover"
+                                    />
+                                    <div>
+                                      <div className="text-2xl">{item.product.name}</div>
+                                      <div className="text-gray-500">{item.product.description}</div>
+                                      {item.product.size && (
+                                        <div className="text-gray-500">Size: {item.product.size}</div>
+                                      )}
+                                      <div className="text-gray-500">Quantity: {item.quantity}</div>
+                                      <div className="text-gray-500">${item.product.price}</div>
+                                      <button onClick={() => handleDelete(item.id)}>
+                                        <FiTrash2 className="text-gray-500 text-2xl" />
+                                      </button>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="flex flex-col items-center">
+                                <div className="text-2xl">Total: ${totalPrice}</div>
                                 <button className="text-tvsm-white bg-tvsm-orange font-mulish text-2xl rounded-2xl p-6 w-3/5">
                                   CHECK OUT
                                 </button>

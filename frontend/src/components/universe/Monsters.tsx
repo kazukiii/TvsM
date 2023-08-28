@@ -18,8 +18,9 @@ const Monsters: FC = () => {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`md:h-[1000px] sm:h-[500px] h-[400px] lg:w-1/2 w-full bg-no-repeat bg-cover bg-center relative ${isHovered ? 'bg-monsters-variant' : 'bg-monsters-default'
-        }`}
+      className={`md:h-[1000px] sm:h-[500px] h-[400px] lg:w-1/2 w-full bg-no-repeat bg-cover bg-center relative ${
+        isHovered ? 'sm:bg-monsters-variant' : 'sm:bg-monsters-default'
+      } bg-monsters-variant`}
     >
       <Button
         text="MONSTER"
