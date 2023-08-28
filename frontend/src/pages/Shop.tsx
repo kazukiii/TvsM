@@ -18,7 +18,7 @@ const Shop: FC = () => {
       </div>
       <div className="flex flex-col items-center">
         <h2 className="text-3xl font-ldr-kaet">T-SHIRTS</h2>
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
           {products
             .filter(product => product.category === 'TSHIRT')
             .map((product, index) => (
@@ -28,7 +28,7 @@ const Shop: FC = () => {
       </div>
       <div className="flex flex-col items-center">
         <h2 className="text-3xl font-ldr-kaet">KEYCHAINS</h2>
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
           {products
             .filter(product => product.category === 'KEYCHAIN')
             .map((product, index) => (
@@ -38,7 +38,7 @@ const Shop: FC = () => {
       </div>
       <div className="flex flex-col items-center">
         <h2 className="text-3xl font-ldr-kaet">GAMES/GAMING ACCESSORIES</h2>
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
           {products
             .filter(product => product.category === 'ACCESSORIES')
             .map((product, index) => (

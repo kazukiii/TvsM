@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axiosInstance from '../services/axiosInstance.ts'
 import { Cart } from '../../../types/cart.ts'
 
@@ -13,6 +13,10 @@ const useCart = () => {
       console.error('Failed to fetch cart:', error)
     }
   }
+
+  useEffect(() => {
+    fetchCart()
+  }, [])
 
   return { cartItems, fetchCart }
 }

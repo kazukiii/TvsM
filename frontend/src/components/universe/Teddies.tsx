@@ -18,8 +18,9 @@ const Teddies: FC = () => {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`md:h-[1000px] sm:h-[500px] h-[400px] lg:w-1/2 w-full bg-no-repeat bg-cover bg-center relative ${isHovered ? 'bg-teddies-variant' : 'bg-teddies-default'
-        }`}
+      className={`md:h-[1000px] sm:h-[500px] h-[400px] lg:w-1/2 w-full bg-no-repeat bg-cover bg-center relative ${
+        isHovered ? 'sm:bg-teddies-variant' : 'sm:bg-teddies-default'
+      } bg-teddies-variant`}
     >
       <Button
         text="TEDDIES"

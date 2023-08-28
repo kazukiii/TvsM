@@ -5,8 +5,11 @@ import logo from '../assets/logo.svg'
 import cards from '../assets/cards.png'
 import box from '../assets/box.png'
 import Button from '../components/common/Button.tsx'
+import { useNavigate } from 'react-router-dom'
 
 const Games: FC = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col gap-16">
       <Header />
@@ -27,8 +30,8 @@ const Games: FC = () => {
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <div className="aspect-video mx-4 bg-tvsm-dark-blue rounded-2xl flex">
-          <div className="w-2/5 ml-36">
+        <div className="aspect-video mx-4 bg-tvsm-dark-blue rounded-2xl flex sm:flex-row flex-col">
+          <div className="sm:w-2/5 sm:ml-36 text-center">
             <h3 className="text-tvsm-white font-ldr-kaet text-2xl pt-32">WHAT IS IN THE BOX?</h3>
             <div className="text-tvsm-white text-xl font-mulish pt-24">
               <p>1 Rulebook;</p>
@@ -41,20 +44,22 @@ const Games: FC = () => {
               <p>16 Bedroom cards;</p>
             </div>
           </div>
-          <div className="w-3/5 flex flex-col items-center justify-between my-10">
+          <div className="sm:w-3/5 flex flex-col items-center justify-between my-10">
             <img src={cards} alt="cards" className="w-full" />
             <Button
               text="BUY NOW"
               className="w-72 h-24 bg-tvsm-orange text-tvsm-black font-mulish text-2xl rounded-2xl"
+              onClick={() => navigate('/shop')}
             />
           </div>
         </div>
-        <div className="aspect-video mx-4 bg-tvsm-wine-red rounded-2xl flex">
-          <div className="w-3/5 flex flex-col items-center justify-between my-10">
+        <div className="aspect-video mx-4 bg-tvsm-wine-red rounded-2xl flex sm:flex-row flex-col">
+          <div className="sm:w-3/5 flex flex-col items-center justify-between my-10">
             <img src={box} alt="box" className="w-2/3" />
             <Button
               text="BUY NOW"
               className="w-72 h-24 bg-tvsm-orange text-tvsm-black font-mulish text-2xl rounded-2xl"
+              onClick={() => navigate('/shop')}
             />
           </div>
           <div className="flex flex-col justify-between">
